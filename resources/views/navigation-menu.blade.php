@@ -89,7 +89,7 @@
                 @else
 
                 @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                <div class="ml-3 relative">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
@@ -129,8 +129,8 @@
 
         @guest
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ $link['url'] }}" :active="link['active']">
-                {{ $link['title'] }}
+            <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                {{ __('Login') }}
             </x-responsive-nav-link>
         </div>
 
