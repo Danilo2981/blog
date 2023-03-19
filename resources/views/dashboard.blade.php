@@ -12,4 +12,8 @@
             </div>
         </div>
     </div>
+
+    <div>
+        mensaje
+    </div>
 </x-app-layout>
