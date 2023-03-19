@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class='dark'>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <script>
+            if (localStorage.dark == 1 || (!('dark' in localStorage)
+            && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                localStorage.dark = 1;
+                document.documentElement.classList.add('dark');
+            } else {
+                localStorage.dark = 0;
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -36,7 +47,9 @@
 
         <div class="flex" x-data="{ 
             open: false,
-            openSidebar: true
+            openSidebar: true,
+            show: localStorage.dark == 1 ? true: false, 
+            toggle() { this.show = !this.show }
         }">
 
             {{-- Side Bar --}}

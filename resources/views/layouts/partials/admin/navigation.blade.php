@@ -20,6 +20,10 @@
             </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
+                <div class="mr-2">
+                    <i id="moon" class="setMode cursor-pointer fa-solid fa-moon" @click="toggle" :class="{'block': !show, 'hidden': show}"></i>
+                    <i id="sun" class="setMode cursor-pointer fa-regular fa-sun text-white" @click="toggle" :class="{'hidden': !show, 'block': show}"></i>
+                </div>
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
